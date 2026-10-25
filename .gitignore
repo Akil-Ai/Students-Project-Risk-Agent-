@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+.venv/
+env/
+venv/
+ENV/
+
+# Data & Database
+data/*.db
+data/*.sqlite3
+models_store/*.joblib
+logs/*.log
+
+# Environment & Secrets
+.env
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Streamlit & IDE
+.streamlit/
+.idea/
+.vscode/
+
+# Node & Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
