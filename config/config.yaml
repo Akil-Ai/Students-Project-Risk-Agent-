@@ -1,0 +1,57 @@
+# Core Project & Delay Parameters
+delay_threshold_days: 14
+min_training_projects: 15
+target_recall: 0.85
+jump_threshold: 0.20
+alert_cooldown_days: 7
+
+# Risk Bucket Thresholds
+risk_buckets:
+  low_max: 0.35
+  medium_max: 0.70
+
+# Feature Extraction Hyperparameters
+feature_params:
+  lookback_weeks: 4
+  stale_update_days_threshold: 14
+
+# Rule-Based Cold Start Weights (Sum to 1.0)
+rule_weights:
+  progress_gap_weight: 0.30
+  days_since_update_weight: 0.20
+  action_item_closure_weight: 0.15
+  missed_meetings_weight: 0.15
+  deadline_slips_weight: 0.10
+  negative_sentiment_weight: 0.10
+
+# Rule Triggers for Heuristic Explanations
+rule_thresholds:
+  critical_progress_gap: 0.20
+  stale_update_days: 14
+  poor_closure_rate: 0.50
+  high_missed_meetings: 2
+  deadline_slips_limit: 1
+
+# Suggested Actions Mapped to Risk Drivers
+suggested_actions:
+  progress_gap: "Schedule an urgent sync to de-scope deliverables or revise timeline."
+  stale_updates: "Contact student team lead immediately to verify weekly progress."
+  open_actions: "Review outstanding action items with guide and clear blockers."
+  missed_meetings: "Issue an attendance warning and mandate attendance at next review."
+  negative_sentiment: "Convene a 1-on-1 meeting between guide and team to address reported frictions."
+  default_high_risk: "Initiate comprehensive project intervention and weekly monitoring."
+
+# Plain English Explanation Templates
+explanation_templates:
+  progress_gap: "Project progress lags {value:.1%} behind planned milestones."
+  days_since_last_update: "No progress updates or commits logged for {value:.0f} days."
+  action_item_closure_rate: "Action item closure rate is critically low at {value:.1%}."
+  missed_meetings_total: "{value:.0f} project meetings were missed recently."
+  deadline_slips_count: "{value:.0f} milestone deadline slip(s) recorded."
+  negative_sentiment: "Review comments reflect critical concerns and blockers."
+  rubric_score_trend: "Review performance scores have declined over recent evaluations."
+  guide_workload: "Guide is currently mentoring {value:.0f} active projects."
+
+# Scheduler Configuration
+scheduler:
+  risk_scoring_interval_minutes: 60

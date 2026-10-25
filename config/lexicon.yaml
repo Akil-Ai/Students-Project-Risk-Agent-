@@ -1,0 +1,32 @@
+# Review Comment Sentiment & Keyword Lexicon
+negative_keywords:
+  - delayed
+  - lagging
+  - behind
+  - blocked
+  - blocker
+  - poor
+  - absent
+  - missing
+  - slip
+  - unresponsive
+  - slow
+  - incomplete
+  - unsatisfactory
+  - friction
+  - lack of progress
+  - not ready
+  - missed deadline
+  - failed
+
+positive_keywords:
+  - excellent
+  - on track
+  - ahead
+  - completed
+  - proactive
+  - impressive
+  - great progress
+  - timely
+  - responsive
+  - high quality
