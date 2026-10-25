@@ -1,4 +1,5 @@
 import io
+import os
 from fastapi import FastAPI, Depends, HTTPException, status, UploadFile, File, Form, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -36,15 +37,34 @@ app = FastAPI(
     version="2.0.0"
 )
 
+cors_origins_env = os.getenv("CORS_ORIGINS", "*")
+if cors_origins_env == "*":
+    origins = ["*"]
+else:
+    origins = [o.strip() for o in cors_origins_env.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/token")
+
+@app.get("/")
+def root_status():
+    return {
+        "status": "online",
+        "service": "Student Project Risk Agent REST API",
+        "version": "2.0.0",
+        "docs_url": "/docs"
+    }
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
 
 @app.on_event("startup")
 def startup_event():

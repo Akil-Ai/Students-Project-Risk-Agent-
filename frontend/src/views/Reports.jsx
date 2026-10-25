@@ -53,7 +53,7 @@ export default function Reports() {
 
   const handleDownloadPdf = () => {
     const token = api.getToken();
-    fetch('/api/v1/reports/pdf', {
+    fetch(`${api.getBaseUrl()}/reports/pdf`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

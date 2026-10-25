@@ -17,7 +17,7 @@ export default function BulkImport() {
   const [error, setError] = useState('');
 
   const handleDownloadTemplate = () => {
-    window.open(`/api/v1/import/template/${entityType}`, '_blank');
+    window.open(`${api.getBaseUrl()}/import/template/${entityType}`, '_blank');
   };
 
   const handleUpload = async (e) => {
